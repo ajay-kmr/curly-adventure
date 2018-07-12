@@ -1,6 +1,7 @@
 package com.example.multidbjpa.dao.db1.repoService;
 
 import com.example.multidbjpa.dao.db1.entity.Catalog;
+import com.example.multidbjpa.dao.db1.entity.Catalog_;
 import com.example.multidbjpa.dao.db1.repository.CatalogRepository;
 import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
 import com.example.multidbjpa.dto.CatalogDTO;
@@ -42,10 +43,10 @@ public class CatalogRepoService extends BaseRepoService<Catalog, Long> {
         CatalogDTO catalogDTO = requestDTO.getQuery();
         if (catalogDTO != null) {
             if (catalogDTO.getId() != null) {
-                criteria.add(Restrictions.eq("id", catalogDTO.getId()));
+                criteria.add(Restrictions.eq(Catalog_.ID, catalogDTO.getId()));
             }
             if (!StringUtils.isEmpty(catalogDTO.getName())) {
-                criteria.add(Restrictions.ilike("name", catalogDTO.getName(), MatchMode.ANYWHERE));
+                criteria.add(Restrictions.ilike(Catalog_.NAME, catalogDTO.getName(), MatchMode.ANYWHERE));
             }
         }
         Long filteredFrom = count(criteria);
@@ -58,8 +59,8 @@ public class CatalogRepoService extends BaseRepoService<Catalog, Long> {
 
     private void addProjection(Criteria criteria) {
         criteria.setProjection(Projections.projectionList()
-                .add(Projections.property("id").as("id"))
-                .add(Projections.property("name").as("name"))
+                .add(Projections.property(Catalog_.ID).as("id"))
+                .add(Projections.property(Catalog_.NAME).as("name"))
         );
     }
 }
