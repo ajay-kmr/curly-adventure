@@ -1,0 +1,3 @@
+In order to generate Jpa Meta model, please refer plugin
+https://github.com/Scalified/gradle-metamodel-plugin
+https://plugins.gradle.org/plugin/com.scalified.plugins.gradle.metamodel
