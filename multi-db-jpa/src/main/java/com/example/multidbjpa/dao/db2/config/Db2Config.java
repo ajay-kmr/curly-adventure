@@ -3,6 +3,7 @@ package com.example.multidbjpa.dao.db2.config;
 import com.example.multidbjpa.dao.db2.entity.Db2EntityMarker;
 import com.example.multidbjpa.dao.db2.repository.Db2RepositoryMarker;
 import com.example.multidbjpa.dao.db2.repository.Db2UserRepository;
+import com.example.multidbjpa.dao.shared.entity.SharedEntityMarker;
 import com.example.multidbjpa.dao.shared.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,7 +46,7 @@ public class Db2Config {
         factoryBean.setDataSource(db2DataSource);
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         factoryBean.setPackagesToScan(Db2EntityMarker.class.getPackage().getName(),
-                User.class.getPackage().getName());
+                SharedEntityMarker.class.getPackage().getName());
         factoryBean.afterPropertiesSet();
         return factoryBean.getObject();
     }

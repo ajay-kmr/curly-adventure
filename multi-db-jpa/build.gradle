@@ -46,18 +46,17 @@ dependencies {
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'commons-lang', name: 'commons-lang', version: '2.2'
-
-    bootRun {
-//        addResources = true // We can set it to true if we would like to reload src/main/resources
-        jvmArgs = [
-                "-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005",
-        ]
-    }
-
 }
 
 dependencyManagement {
     imports {
         mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
     }
+}
+
+bootRun {
+//        addResources = true // We can set it to true if we would like to reload src/main/resources
+    jvmArgs = [
+            "-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005",
+    ]
 }

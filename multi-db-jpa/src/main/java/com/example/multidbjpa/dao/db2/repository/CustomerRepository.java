@@ -1,9 +1,9 @@
 package com.example.multidbjpa.dao.db2.repository;
 
 import com.example.multidbjpa.dao.db2.entity.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.multidbjpa.dao.shared.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends BaseRepository<Customer, Long> {
 }

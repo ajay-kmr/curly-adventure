@@ -3,6 +3,7 @@ package com.example.multidbjpa.dao.db1.config;
 import com.example.multidbjpa.dao.db1.entity.Db1EntityMarker;
 import com.example.multidbjpa.dao.db1.repository.Db1RepositoryMarker;
 import com.example.multidbjpa.dao.db1.repository.Db1UserRepository;
+import com.example.multidbjpa.dao.shared.entity.SharedEntityMarker;
 import com.example.multidbjpa.dao.shared.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,7 +45,7 @@ public class Db1Config {
         factoryBean.setDataSource(db1DataSource);
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         factoryBean.setPackagesToScan(Db1EntityMarker.class.getPackage().getName(),
-                User.class.getPackage().getName());
+                SharedEntityMarker.class.getPackage().getName());
         factoryBean.afterPropertiesSet();
         return factoryBean.getObject();
     }
