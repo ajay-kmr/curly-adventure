@@ -3,7 +3,7 @@ package com.example.multidbjpa.dao.db1.config;
 import com.example.multidbjpa.dao.db1.entity.Db1EntityMarker;
 import com.example.multidbjpa.dao.db1.repository.Db1RepositoryMarker;
 import com.example.multidbjpa.dao.db1.repository.Db1UserRepository;
-import com.example.multidbjpa.dao.shared.User;
+import com.example.multidbjpa.dao.shared.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

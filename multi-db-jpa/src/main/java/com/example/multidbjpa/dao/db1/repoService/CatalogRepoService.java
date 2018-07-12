@@ -2,7 +2,7 @@ package com.example.multidbjpa.dao.db1.repoService;
 
 import com.example.multidbjpa.dao.db1.entity.Catalog;
 import com.example.multidbjpa.dao.db1.repository.CatalogRepository;
-import com.example.multidbjpa.dao.shared.BaseRepoService;
+import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
 import com.example.multidbjpa.dto.CatalogDTO;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.dto.DataTableResponseDTO;

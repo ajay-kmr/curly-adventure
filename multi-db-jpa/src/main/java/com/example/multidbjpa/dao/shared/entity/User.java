@@ -1,4 +1,4 @@
-package com.example.multidbjpa.dao.shared;
+package com.example.multidbjpa.dao.shared.entity;
 
 import lombok.Getter;
 import lombok.Setter;

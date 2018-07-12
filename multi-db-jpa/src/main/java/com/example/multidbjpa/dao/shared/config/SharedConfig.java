@@ -1,4 +1,4 @@
-package com.example.multidbjpa.dao;
+package com.example.multidbjpa.dao.shared.config;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,5 +13,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         HibernateJpaAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class})
 @EnableTransactionManagement
-public class CommonConfig {
+public class SharedConfig {
 }

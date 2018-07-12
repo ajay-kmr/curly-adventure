@@ -1,5 +1,6 @@
-package com.example.multidbjpa.dao.shared;
+package com.example.multidbjpa.dao.shared.repoService;
 
+import com.example.multidbjpa.dao.shared.entity.User;
 import lombok.extern.apachecommons.CommonsLog;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;

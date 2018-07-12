@@ -1,4 +1,4 @@
-package com.example.multidbjpa.dao.shared;
+package com.example.multidbjpa.dao.shared.repository;
 
 import com.example.multidbjpa.dao.db2.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

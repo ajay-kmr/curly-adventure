@@ -1,5 +1,6 @@
-package com.example.multidbjpa.dao.shared;
+package com.example.multidbjpa.dao.shared.repoService;
 
+import com.example.multidbjpa.dao.shared.entity.BaseEntity;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.service.impl.BaseServiceImpl;
 import lombok.extern.apachecommons.CommonsLog;

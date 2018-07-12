@@ -1,6 +1,6 @@
 package com.example.multidbjpa.dao.db2.entity;
 
-import com.example.multidbjpa.dao.shared.BaseEntity;
+import com.example.multidbjpa.dao.shared.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

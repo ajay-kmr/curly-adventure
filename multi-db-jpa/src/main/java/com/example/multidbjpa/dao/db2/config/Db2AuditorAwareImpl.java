@@ -2,7 +2,7 @@ package com.example.multidbjpa.dao.db2.config;
 
 
 import com.example.multidbjpa.dao.db2.repository.Db2UserRepository;
-import com.example.multidbjpa.dao.shared.User;
+import com.example.multidbjpa.dao.shared.entity.User;
 import org.springframework.data.domain.AuditorAware;
 
 import java.util.Optional;

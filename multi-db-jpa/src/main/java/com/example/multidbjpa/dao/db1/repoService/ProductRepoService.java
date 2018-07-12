@@ -5,7 +5,7 @@ import com.example.multidbjpa.dao.db1.repository.ProductRepository;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.dto.DataTableResponseDTO;
 import com.example.multidbjpa.dto.ProductDTO;
-import com.example.multidbjpa.dao.shared.BaseRepoService;
+import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
 import lombok.extern.apachecommons.CommonsLog;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
@@ -14,14 +14,10 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
