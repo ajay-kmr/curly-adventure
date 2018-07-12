@@ -1,0 +1,7 @@
+apply plugin: "com.scalified.plugins.gradle.metamodel"
+
+metamodel {
+    srcDir = 'src/generated/java' // metamodel generated source directory
+    hibernateVersion = '+' // hibernate static metamodel generator version
+    processor = 'org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor' // metamodel processor
+}
