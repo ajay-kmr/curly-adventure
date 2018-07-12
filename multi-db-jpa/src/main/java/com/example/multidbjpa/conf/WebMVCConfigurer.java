@@ -1,4 +1,4 @@
-package com.globomart.productcatalog.conf;
+package com.example.multidbjpa.conf;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 import java.util.TimeZone;
@@ -18,11 +18,10 @@ import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_ENUMS_US
 
 @Configuration
 @CommonsLog
-public class WebMVCConfigurer extends WebMvcConfigurerAdapter {
+public class WebMVCConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        super.addCorsMappings(registry);
         registry.addMapping("/**");
     }
 
@@ -41,6 +40,5 @@ public class WebMVCConfigurer extends WebMvcConfigurerAdapter {
         objectMapper.enable(READ_ENUMS_USING_TO_STRING);
         objectMapper.enable(WRITE_ENUMS_USING_TO_STRING);
         converters.add(mappingJackson2HttpMessageConverter);
-        super.configureMessageConverters(converters);
     }
 }
