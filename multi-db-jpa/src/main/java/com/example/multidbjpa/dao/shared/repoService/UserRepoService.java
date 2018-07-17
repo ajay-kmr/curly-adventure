@@ -17,11 +17,6 @@ import static org.hibernate.criterion.Restrictions.eq;
 @CommonsLog
 public abstract class UserRepoService extends BaseRepoService<User, Long> {
 
-    @Override
-    protected Class<User> getEntityClass() {
-        return User.class;
-    }
-
     @Transactional(readOnly = true)
     public User findByEmailId(String emailId) throws Exception {
 

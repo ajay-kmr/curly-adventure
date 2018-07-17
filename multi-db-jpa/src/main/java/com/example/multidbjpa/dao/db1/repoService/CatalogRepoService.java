@@ -3,7 +3,9 @@ package com.example.multidbjpa.dao.db1.repoService;
 import com.example.multidbjpa.dao.db1.entity.Catalog;
 import com.example.multidbjpa.dao.db1.entity.Catalog_;
 import com.example.multidbjpa.dao.db1.repository.CatalogRepository;
+import com.example.multidbjpa.dao.db1.specification.CatalogSpecifications;
 import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
+import com.example.multidbjpa.dao.shared.repository.BaseRepository;
 import com.example.multidbjpa.dto.CatalogDTO;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.dto.DataTableResponseDTO;
@@ -14,7 +16,9 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -28,13 +32,8 @@ public class CatalogRepoService extends BaseRepoService<Catalog, Long> {
     CatalogRepository catalogRepository;
 
     @Override
-    protected JpaRepository<Catalog, Long> getRepository() {
+    protected BaseRepository<Catalog, Long> getRepository() {
         return catalogRepository;
-    }
-
-    @Override
-    protected Class<Catalog> getEntityClass() {
-        return Catalog.class;
     }
 
     @SuppressWarnings("unchecked")
@@ -62,5 +61,10 @@ public class CatalogRepoService extends BaseRepoService<Catalog, Long> {
                 .add(Projections.property(Catalog_.ID).as("id"))
                 .add(Projections.property(Catalog_.NAME).as("name"))
         );
+    }
+
+    public DataTableResponseDTO<Object, List<Catalog>> findByNameLike(String name) {
+        Page<Catalog> catalogPage = catalogRepository.findAll(CatalogSpecifications.nameLike(name), PageRequest.of(0, 10, Sort.Direction.ASC, Catalog_.ID));
+        return DataTableResponseDTO.of(catalogPage);
     }
 }

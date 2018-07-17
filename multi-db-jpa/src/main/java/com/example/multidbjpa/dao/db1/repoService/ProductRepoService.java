@@ -2,10 +2,11 @@ package com.example.multidbjpa.dao.db1.repoService;
 
 import com.example.multidbjpa.dao.db1.entity.Product;
 import com.example.multidbjpa.dao.db1.repository.ProductRepository;
+import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
+import com.example.multidbjpa.dao.shared.repository.BaseRepository;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.dto.DataTableResponseDTO;
 import com.example.multidbjpa.dto.ProductDTO;
-import com.example.multidbjpa.dao.shared.repoService.BaseRepoService;
 import lombok.extern.apachecommons.CommonsLog;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
@@ -14,7 +15,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -28,13 +28,8 @@ public class ProductRepoService extends BaseRepoService<Product, Long> {
     ProductRepository productRepository;
 
     @Override
-    protected JpaRepository<Product, Long> getRepository() {
+    protected BaseRepository<Product, Long> getRepository() {
         return productRepository;
-    }
-
-    @Override
-    protected Class<Product> getEntityClass() {
-        return Product.class;
     }
 
     @SuppressWarnings("unchecked")

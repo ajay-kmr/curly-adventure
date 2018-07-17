@@ -5,6 +5,7 @@ import com.example.multidbjpa.dao.db2.repository.Db2RepositoryMarker;
 import com.example.multidbjpa.dao.db2.repository.Db2UserRepository;
 import com.example.multidbjpa.dao.shared.entity.SharedEntityMarker;
 import com.example.multidbjpa.dao.shared.entity.User;
+import com.example.multidbjpa.dao.shared.repository.BaseRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +25,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(entityManagerFactoryRef = "db2EntityManagerFactory",
         transactionManagerRef = "db2TransactionManager",
-        basePackageClasses = Db2RepositoryMarker.class)
+        basePackageClasses = Db2RepositoryMarker.class,
+        repositoryBaseClass = BaseRepositoryImpl.class)
 public class Db2Config {
 
     @Autowired

@@ -5,6 +5,7 @@ import com.example.multidbjpa.dao.db1.repository.Db1RepositoryMarker;
 import com.example.multidbjpa.dao.db1.repository.Db1UserRepository;
 import com.example.multidbjpa.dao.shared.entity.SharedEntityMarker;
 import com.example.multidbjpa.dao.shared.entity.User;
+import com.example.multidbjpa.dao.shared.repository.BaseRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,9 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(entityManagerFactoryRef = "db1EntityManagerFactory",
-        transactionManagerRef = "db1TransactionManager", basePackageClasses = Db1RepositoryMarker.class)
+        transactionManagerRef = "db1TransactionManager",
+        basePackageClasses = Db1RepositoryMarker.class,
+        repositoryBaseClass = BaseRepositoryImpl.class)
 public class Db1Config {
 
     @Autowired

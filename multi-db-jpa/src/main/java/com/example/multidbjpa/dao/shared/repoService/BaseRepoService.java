@@ -1,6 +1,7 @@
 package com.example.multidbjpa.dao.shared.repoService;
 
 import com.example.multidbjpa.dao.shared.entity.BaseEntity;
+import com.example.multidbjpa.dao.shared.repository.BaseRepository;
 import com.example.multidbjpa.dto.DataTableRequestDTO;
 import com.example.multidbjpa.service.impl.BaseServiceImpl;
 import lombok.extern.apachecommons.CommonsLog;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.EntityManager;
@@ -28,19 +28,19 @@ import static org.hibernate.criterion.Restrictions.eq;
 @CommonsLog
 public abstract class BaseRepoService<T extends BaseEntity, ID extends Serializable> extends BaseServiceImpl {
 
-    protected abstract JpaRepository<T, ID> getRepository();
+    protected abstract BaseRepository<T, ID> getRepository();
 
-    abstract protected Class<T> getEntityClass();
+    protected Class<T> getEntityClass() {
+        return getRepository().getEntityClass();
+    }
 
     protected Session getSession() {
         return getEntityManager().unwrap(Session.class);
     }
 
     public EntityManager getEntityManager() {
-        return null;
+        return getRepository().getEntityManager();
     }
-
-    ;
 
     protected Criteria getCriteria() {
         return getSession().createCriteria(getEntityClass())

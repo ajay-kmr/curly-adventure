@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -87,6 +88,14 @@ public class DataTableResponseDTO<Q, T> {
         DataTableResponseDTO<Q, List<T>> dataTableResponseDTO = new DataTableResponseDTO<>();
         dataTableResponseDTO.setStatus(status);
         dataTableResponseDTO.setMessage(message);
+        return dataTableResponseDTO;
+    }
+
+    public static <Q,T> DataTableResponseDTO<Q,List<T>> of(Page<T> page){
+        DataTableResponseDTO<Q,List<T>> dataTableResponseDTO = new DataTableResponseDTO<Q,List<T>>();
+        dataTableResponseDTO.setData(page.getContent());
+        dataTableResponseDTO.setRecordsTotal(page.getTotalElements());
+        dataTableResponseDTO.setRecordsFiltered(page.getTotalElements());
         return dataTableResponseDTO;
     }
 }
