@@ -50,7 +50,7 @@ public abstract class BaseRepoService<T extends BaseEntity, ID extends Serializa
         return getEntityManager().getCriteriaBuilder();
     }
 
-    protected CriteriaQuery<T> CriteriaQuery() {
+    protected CriteriaQuery<T> createCriteriaQuery() {
         return getCriteriaBuilder().createQuery(getEntityClass());
     }
 
