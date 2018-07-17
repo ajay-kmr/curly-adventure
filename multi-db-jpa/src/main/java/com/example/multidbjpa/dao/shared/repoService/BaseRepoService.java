@@ -13,9 +13,13 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -38,8 +42,16 @@ public abstract class BaseRepoService<T extends BaseEntity, ID extends Serializa
         return getEntityManager().unwrap(Session.class);
     }
 
-    public EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() {
         return getRepository().getEntityManager();
+    }
+
+    protected CriteriaBuilder getCriteriaBuilder() {
+        return getEntityManager().getCriteriaBuilder();
+    }
+
+    protected CriteriaQuery<T> CriteriaQuery() {
+        return getCriteriaBuilder().createQuery(getEntityClass());
     }
 
     protected Criteria getCriteria() {
@@ -194,5 +206,49 @@ public abstract class BaseRepoService<T extends BaseEntity, ID extends Serializa
             return Collections.emptyList();
         }
         return result.stream().map((T it) -> (ID) it.getId()).collect(Collectors.toList());
+    }
+
+    public List<T> findAllById(Iterable<ID> ids) {
+        return getRepository().findAllById(ids);
+    }
+
+    public <S extends T> List<S> saveAll(Iterable<S> entities) {
+        return getRepository().saveAll(entities);
+    }
+
+    public Optional<T> findById(ID id) {
+        return getRepository().findById(id);
+    }
+
+    public boolean existsById(ID id) {
+        return getRepository().existsById(id);
+    }
+
+    public void deleteById(ID id) {
+        getRepository().deleteById(id);
+    }
+
+    public void deleteAll(Iterable<? extends T> entities) {
+        getRepository().deleteAll(entities);
+    }
+
+    public Optional<T> findOne(@Nullable Specification<T> spec) {
+        return getRepository().findOne(spec);
+    }
+
+    public List<T> findAll(@Nullable Specification<T> spec) {
+        return getRepository().findAll(spec);
+    }
+
+    public Page<T> findAll(@Nullable Specification<T> spec, Pageable pageable) {
+        return getRepository().findAll(spec, pageable);
+    }
+
+    public List<T> findAll(@Nullable Specification<T> spec, Sort sort) {
+        return getRepository().findAll(spec, sort);
+    }
+
+    public long count(@Nullable Specification<T> spec) {
+        return getRepository().count(spec);
     }
 }
