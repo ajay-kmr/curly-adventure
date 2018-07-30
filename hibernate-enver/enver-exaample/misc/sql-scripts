@@ -1,0 +1,5 @@
+select * from customer;
+
+select * from customer_aud;
+
+select * from revinfo;

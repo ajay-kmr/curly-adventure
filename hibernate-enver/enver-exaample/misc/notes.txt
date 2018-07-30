@@ -1,0 +1,20 @@
+
+https://stackoverflow.com/questions/2813698/hibernate-envers-multiple-audit-targets
+
+https://www.thoughts-on-java.org/conditional-auditing-hibernate-envers/
+
+https://github.com/ignacioSuay/hibernate-envers-sample/blob/master/pom.xml
+Practice Exercises
+ 1) Provide a custom revision entity to additionally capture who made the changes.
+
+ 2) Write a query to retrieve only historical data which meets some criteria.
+ Use the User Guide to see how Envers queries are constructed.
+
+ 3) Experiment with auditing entities which have various forms of
+ relationships (many-to-one, many-to-many, etc).
+ Try retrieving historical versions (revisions) of such entities and navigating the object tree.
+
+
+ Important Annotations:-
+    1) @Audited
+    2) @AuditOverride(forClass = BaseEntity.class)
